@@ -3,7 +3,7 @@ Simple colorful logging utility for Go
 
 ## Installation
 ```
-go get -u github.com/ManuelBauer/macaw-logger
+go get -u github.com/ManuelBauer/macaw
 ```
 
 ## Usage
