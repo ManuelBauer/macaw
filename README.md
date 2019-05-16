@@ -1,4 +1,4 @@
-# Macaw-Logger
+# Macaw
 Simple colorful logging utility for Go
 
 ## Installation
