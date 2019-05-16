@@ -21,7 +21,7 @@ type Logger struct {
 
 // CreateSubLogger Create new sub logger
 func (m *Logger) CreateSubLogger(name string) Logger {
-	return Logger{Name: m.Name + " / " + name}
+	return Logger{Name: m.Name + " | " + name}
 }
 
 func (m *Logger) print(logLevel string, color string, params ...interface{}) {
