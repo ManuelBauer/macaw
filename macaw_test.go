@@ -31,3 +31,11 @@ func TestSubLogger(t *testing.T) {
 	sub := logger.CreateSubLogger("Sub logger")
 	sub.Info("Message from the sub logger")
 }
+
+func TestSubLoggerOfSubLogger(t *testing.T) {
+	logger := macaw.CreateLogger("Example")
+	sub := logger.CreateSubLogger("Sub logger")
+	sub2 := sub.CreateSubLogger("Additional sub logger")
+	sub.Info("Message from the sub logger")
+	sub2.Info("Message from additional sub logger")
+}
