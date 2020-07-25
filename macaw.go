@@ -26,12 +26,17 @@ func (m *Logger) CreateSubLogger(name ...string) Logger {
 }
 
 func (m *Logger) print(logLevel string, color string, params ...interface{}) {
-	fmt.Printf(color)
-	fmt.Printf("%s (%s) [%v] ", time.Now().Format("2006-01-02T15:04:05-0700"), logLevel, m.Name)
+	paramStr := ""
+	output := []interface{}{
+		color, time.Now().Format("2006-01-02T15:04:05-0700"), logLevel, m.Name,
+	}
 
-	params = append(params, resetColor)
+	for i := 0; i < len(params); i++ {
+		paramStr += "%v"
+		output = append(output, params[i])
+	}
 
-	fmt.Println(params...)
+	fmt.Printf("%s%s (%s) [%v] "+paramStr+"\033[0m\n", output...)
 }
 
 // Debug Print message with severity level debug

@@ -39,3 +39,15 @@ func TestSubLoggerOfSubLogger(t *testing.T) {
 	sub.Info("Message from the sub logger")
 	sub2.Info("Message from additional sub logger")
 }
+
+func TestRaceCondition(t *testing.T) {
+	logger := macaw.CreateLogger("Race condition")
+	logger2 := macaw.CreateLogger("Race condition 2")
+
+	debugString := "Debug message"
+
+	for i := 0; i < 1000; i++ {
+		logger.Debug(debugString, i)
+		logger2.Info("Info message", i)
+	}
+}
