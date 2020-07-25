@@ -33,6 +33,10 @@ func (m *Logger) print(logLevel string, color string, params ...interface{}) {
 
 	for i := 0; i < len(params); i++ {
 		paramStr += "%v"
+		if i < len(params)-1 {
+			paramStr += " "
+		}
+
 		output = append(output, params[i])
 	}
 
